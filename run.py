@@ -65,7 +65,7 @@ def age_group():
     """
     First question in the survey
     """
-    print('What is your age?')
+    print('Q1. What is your age?')
     age_choice = ['10-18', '19-30', '31-45', '46-60', '61 and Above']
     # This is to print index number start with 1 in the choice
     for index, age_range in enumerate(age_choice, start=1):
@@ -75,11 +75,136 @@ def age_group():
     while user_input < 1 or user_input > len(age_choice):
         try:
             user_input = int(input("Enter your choice: "))
-            if user_input >= 1 or user_input < len(age_choice):
+            if user_input >= 1 and user_input <= len(age_choice):
                 # As index always start with 0
                 # user_input-1 is to get the correct number in index
                 selected_age_range = age_choice[user_input-1]
+                print()
                 print(f"You have selected: {selected_age_range}")
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print("Please Enter a Valid Number.")
+    print()
+    gender()
+
+
+def gender():
+    """
+    Second question in the survey
+    """
+    print('Q2. What is your gender?')
+    gender_choice = ['Male', 'Female']
+    # This is to print index number start with 1 in the choice
+    for index, gender_range in enumerate(gender_choice, start=1):
+        print(f"{index}. {gender_range}")    
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(gender_choice):
+        try:
+            user_input = int(input("Enter your choice: "))
+            if user_input >= 1 and user_input <= len(gender_choice):
+                # As index always start with 0
+                # user_input-1 is to get the correct number in index
+                selected_gender = gender_choice[user_input-1]
+                print()
+                print(f"You have selected: {selected_gender}")
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print("Please Enter a Valid Number.")
+    print()
+    continents()
+
+
+def continents():
+    """
+    Third question in the survey
+    """
+    print('Q3. Which continent are you from?')
+    continent_choice = ['Asia', 'Africa', 'North America', 'South America', 'Antartica', 'Europe', 'Australia']
+    # This is to print index number start with 1 in the choice
+    for index, continent_range in enumerate(continent_choice, start=1):
+        print(f"{index}. {continent_range}")    
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(continent_choice):
+        try:
+            user_input = int(input("Enter your choice: "))
+            if user_input >= 1 and user_input <= len(continent_choice):
+                # As index always start with 0
+                # user_input-1 is to get the correct number in index
+                selected_continent = continent_choice[user_input-1]
+                print()
+                print(f"You have selected: {selected_continent}")
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print("Please Enter a Valid Number.")
+    print()
+    destination_prefer()
+
+
+def destination_prefer():
+    """
+    Fourth question in the survey
+    """
+    print('Q4. What type of destination do you prefer?')
+    destination_choice = ['Beach', 'Culture', 'Mountain', 'Suburban', 'Urban']
+    # This is to print index number start with 1 in the choice
+    for index, destination_range in enumerate(destination_choice, start=1):
+        print(f"{index}. {destination_range}")    
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(destination_choice):
+        try:
+            user_input = int(input("Enter your choice: "))
+            if user_input >= 1 and user_input <= len(destination_choice):
+                # As index always start with 0
+                # user_input-1 is to get the correct number in index
+                selected_destination = destination_choice[user_input-1]
+                print()
+                print(f"You have selected: {selected_destination}")
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print("Please Enter a Valid Number.")
+    print()
+    planning()
+
+
+def planning():
+    """
+    Fifth question in the survey
+    """
+    print('Q5. How do you plan your trip?')
+    print()
+    planning_choice = ['Through Agencies', 'Recommendations', 'Online']
+    # This is to print index number start with 1 in the choice
+    for index, planning_range in enumerate(planning_choice, start=1):
+        print(f"{index}. {planning_range}")    
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(planning_choice):
+        try:
+            user_input = int(input("Enter your choice: "))
+            if user_input >= 1 and user_input <= len(planning_choice):
+                # As index always start with 0
+                # user_input-1 is to get the correct number in index
+                selected_planning = planning_choice[user_input-1]
+                print(f"You have selected: {selected_planning}")
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
@@ -141,6 +266,7 @@ def main_page():
         age_group()
     elif select == 2:
         exit()
+
 
 def welcome():
     """

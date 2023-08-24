@@ -208,6 +208,37 @@ def planning():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
+    motivations()
+
+
+def motivations():
+    """
+    Sixth question in the survey
+    """
+    print('Q6. What is the motivations for travel?')
+    print()
+    motivations_choice = ['Cultural', 'Foods', 'Relaxation', 'Price',
+    'Shopping', 'All of the above']
+    # This is to print index number start with 1 in the choice
+    for index, motivations_range in enumerate(motivations_choice, start=1):
+        print(f"{index}. {motivations_range}")    
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(motivations_choice):
+        try:
+            user_input = int(input("Enter your choice: "))
+            if user_input >= 1 and user_input <= len(motivations_choice):
+                # As index always start with 0
+                # user_input-1 is to get the correct number in index
+                selected_motivations = motivations_choice[user_input-1]
+                print(f"You have selected: {selected_motivations}")
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print("Please Enter a Valid Number.")
+    print()    
 
 
 def update_survey_answer():

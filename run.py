@@ -3,7 +3,7 @@ from google.oauth2.service_account import Credentials
 import os   # To use for clear screen
 import time
 import pandas as pd
-import numpy as
+import numpy as np
 import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)   # To initialize the colorama library
@@ -23,8 +23,15 @@ SCOPE = [
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-# To access 'tourism_survey' sheet, name must be same as given.
+# To access 'tourism_survey' sheet, name must be same as sheet.
 SHEET = GSPREAD_CLIENT.open('tourism_survey')
+
+
+# Connect Pandas to Google Sheets.
+data = SHEET.worksheet('survey_answer').get_all_values()
+headers = data.pop()    # Remove headers row, assign to var headers.
+df = pd.DataFrame(data, columns=headers)     # Columns extract from headers.
+df.head()   # To get a glimpse of DataFrame's structures and contents
 
 
 RED = Fore.RED      # Red color text
@@ -35,141 +42,135 @@ BRIGHT = Style.BRIGHT       # Text bright
 
 # To access the data in the worksheet, parameter name same as sheet name.
 text = SHEET.worksheet('text')
-
+# q_and_a = SHEET.worksheet('q_and_a')
+# survey_answer = SHEET.worksheet('survey_answer')
 # To pull all values from the sheet.
 data = text.get_all_values()
+# data2 = q_and_a.get_all_values()
+# data3 = survey_answer.get_all_values()
+print(data)
+print()
+# print(data2)
+# print()
+# print(data3)
+# print()
 
 
 def clear_scr():
     """
     This function is for clear screen for different OS
-    """
-    # Call the clear_scr funtion to clear the terminal
+    Call the clear_scr funtion to clear the terminal
+    """    
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-clear_scr()
-
-
-# if os.name == "posix":
-#     _ = os.system("clear")
-# else:
-#  _ = os.system("cls")
-# For clear screen
-# input('Press enter to clear screen ...')
-
-# Global varible to store user choice of answer.
-user_choice = []
-
-
-def main_page():
+def display_questions_and_options(column):
     """
-    This is for user to choose whether to to take
-    the survey or exit.
-    """
-    print('Main page')
-    print()
-    print()
-    select = 0
-    while select != 1 and select != 2:
-        try:
-            print(BLUE + 'Select an option: \n')
-            print('1.   Take the survey\n')
-            print('2.   No and exit\n')
-            select = int(input('Enter your choice: '))
-            print()
-
-            if select != 1 and select != 2:
-                clear_scr()
-                print()
-                print(RED + 'Invalid number!'.upper() + RESET)
-        except ValueError:
-            print(RED + 'Please enter a valid number 1 or 2' + RESET)
-    if select == 1:
-        # column = 1
-        # options = 4
-        take_survey(column, ans_options)
-    else:
-        # clear_scr()
-        end()
-    # elif select == 2:
-    #     end()
-
-
-# main_page()
-
-
-def take_survey(column, ans_options):
-    """
-    To display the question and option of answer.
-    Column represent the column number of question in the spreadsheet.
-    Options specifies the max number of options display.
-    """
-    global user_choice   # Access to the global variable
-
-    """
-    Access all value from sheet q_and_a, question and answer options.
-    The SHEET object retrieve data from worksheet q_and_a
+    To generate questions and options
     """
     data = SHEET.worksheet('q_and_a').get_all_values()
-
     """
-    Refer to the first row of the data list.
-    Column -1 is to adjust the
+    The code access the first row of the 'data'
+    which contains the header of each column
+    Extract the question from the header row
     """
     question = data[0][column - 1]
-
-    # The option are retrieved from the remaining rows of the data list
+    """
+    This list iterates through each row in 'data'
+    starting from the second row (index 1).
+    Extracts the options from the data row.
+    """
     options = [row[column - 1] for row in data[1:]]
 
-    # To generate the question and options
     print(question)
-    print()
-    """
-    This is to iterate through the options list.
-    Enumerate is a function that takes an iterable ('options' list)
-    and returns an iterator that generate pairs of index and value
-    for each item.
-    """
     for i, option in enumerate(options, start=1):
-        print(f'{i}. {options}')
-        print()
-        if i >= ans_options:
-            # This check if True, the loop terminated using break.
-            break
-    # User input validation
-    user_input = -1
-    # This is ensure the user's choice is within the valid range.
-    while user_input < 1 or user_input > ans_options:
-        try:
-            # Try to get user to input as an interger
-            # Int convert entry to integer
-            user_input = int(input('Enter your choice: '))
-            if user_input < 1 or user_input > ans_options:
-                print('Invalid choice. ')
-                print()
-                print(f'Please choose a number between 1 - {options}')
-        except ValueError:
-            # This block catches any exceptions error in the try block.
-            print('Please enter a valid number.')
-            # Processing user's choice and storing in user_choice[]
-    select_option = options[user_input - 1]
-    print(f'You have selected: {select_option}')
-    user_choice.append(select_option)
-
-# main_page()
+        print(f'{i}. {option}')
+    print()
 
 
 def get_survey():
     """
-    This functions use column as keywords
-    and ans_options as values to generate all the questions
-    and return a list with answer options
+    From sheet q_and_a
+    To generate all the questions for the survey
     """
-    # Access all value from sheet q_and_a, question and answer options.
-    # The SHEET object retrieve data from worksheet q_and_a   
-    data = SHEET.worksheet('q_and_a').get_all_values()
+    data = SHEET.worksheet('q_and_a')   # Retrieves the worksheet
+    # Creates a DataFrame using the data retrieved from 'q_and_a'
+    df_answers = pd.DataFrame(data[1:], columns=data[0])
+    #Calculates the number of columns in the DataFrame
+    column_keys = len(df_answers.columns)
+
+    for column in range(1, column_keys + 1):
+        display_questions_and_options(column)
     
+    submit_option()
+
+
+# get_survey()
+
+
+def update_answer():
+    """
+    This is to update the user's answer into the sheet survey_answer
+    """
+    print('Updating result, please wait...\n')
+    SHEET.worksheet('survey_answer').append_row(data)
+    print('The result updated.\n')
+
+
+# update_answer()
+
+
+def submit_option():
+    """
+    Display option for user to submit the survey.
+    """
+    print('Thank you for completing the survey\n\n'.upper())
+    print
+    print('1. Submit\n'.upper())
+    print('2. Exit\n'.upper())
+
+    user_input = 0
+    while user_input != 1 and user_input != 2:
+        try:
+            user_input = int(input('Please enter your choice: '))
+            if user_input != 1 and user_input != 2:
+                print('Invalid Number!')
+                print('Please enter number 1 or 2')
+        except ValueError:
+            print('Invalid Input!')
+    if user_input == 1:
+        end()
+    elif user_input == 2:
+        exit()
+
+
+# submit_option()
+
+
+def main_page():
+    """
+    This function allow user to choose whether to take the survey
+    """
+    select = 0
+    while select != 1 and select != 2:
+        try:
+            print('Select an option: ')
+            print('1. Take the survey')
+            print('2. No and Exit')
+            print()
+            select = int(input('Please enter your choice: '))
+
+            if select != 1 and select != 2:
+                print('Invalid Number!')
+        except ValueError:
+            print('Please enter a valid number 1 or 2')
+    if select == 1:
+        display_questions_and_options(column)
+    elif select == 2:
+        end()
+
+
+# main_page()
 
 
 def welcome():
@@ -193,20 +194,24 @@ def welcome():
     print()
     input(Fore.CYAN + 'Press enter to continue...' + RESET)
     print()
-    clear_scr()
+    # clear_scr()
     main_page()
+
+
+# welcome()
 
 
 def end():
     """
-    End of survey function
+    Ask user if they want to exit or not.
+    End of survey.
     """
     select = 0
     while select != 1 and select != 2:
         try:
             print('Are you sure you want to exit?\n')
-            print('1.   Yes')
-            print('2.   No')
+            print('1. Yes')
+            print('2. No')
             select = int(input('Enter your choice: '))
             if select != 1 and select != 2:
                 print('Invalid number! Please enter 1 or 2')
@@ -214,13 +219,14 @@ def end():
             print('Please enter a valid number.')
 
     if select == 1:
+        """
+        Retrieve message from sheet 'text' the third column
+        """ 
         goodbye_msg = SHEET.worksheet('text').col_values(3)
-        print()
         print(BLUE + goodbye_msg[1].upper() + RESET)
-        print()
         time.sleep(3)
         exit()
-    else:
+    elif select == 2:
         main_page()
 
 

@@ -27,13 +27,6 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('tourism_survey')
 
 
-# Connect Pandas to Google Sheets.
-data = SHEET.worksheet('survey_answer').get_all_values()
-headers = data.pop()    # Remove headers row, assign to var headers.
-df = pd.DataFrame(data, columns=headers)     # Columns extract from headers.
-df.head()   # To get a glimpse of DataFrame's structures and contents
-
-
 RED = Fore.RED      # Red color text
 YELLOW = Fore.YELLOW    # Yellow color text
 BLUE = Fore.BLUE    # Blue color text
@@ -48,8 +41,8 @@ text = SHEET.worksheet('text')
 data = text.get_all_values()
 # data2 = q_and_a.get_all_values()
 # data3 = survey_answer.get_all_values()
-print(data)
-print()
+# print(data)
+# print()
 # print(data2)
 # print()
 # print(data3)
@@ -64,51 +57,35 @@ def clear_scr():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def display_questions_and_options(column):
-    """
-    To generate questions and options
-    """
-    data = SHEET.worksheet('q_and_a').get_all_values()
-    """
-    The code access the first row of the 'data'
-    which contains the header of each column
-    Extract the question from the header row
-    """
-    question = data[0][column - 1]
-    """
-    This list iterates through each row in 'data'
-    starting from the second row (index 1).
-    Extracts the options from the data row.
-    """
-    options = [row[column - 1] for row in data[1:]]
+# Global variable for result
+user_choice = []
 
-    print(question)
-    for i, option in enumerate(options, start=1):
-        print(f'{i}. {option}')
+
+def age_group():
+    """
+    First question in the survey
+    """
+    print('What is your age?')
+    age_choice = ['10-18', '19-30', '31-45', '46-60', '61 and Above']
+    # This is to print index number start with 1 in the choice
+    for index, age_range in enumerate(age_choice, start=1):
+        print(f"{index}. {age_range}")    
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(age_choice):
+        try:
+            user_input = int(input("Enter your choice: "))
+            if user_input >= 1 or user_input < len(age_choice):
+                # As index always start with 0
+                # user_input-1 is to get the correct number in index
+                selected_age_range = age_choice[user_input-1]
+                print(f"You have selected: {selected_age_range}")
+        except ValueError:
+            print("Please Enter a Valid Number.")
     print()
 
 
-def get_survey():
-    """
-    From sheet q_and_a
-    To generate all the questions for the survey
-    """
-    data = SHEET.worksheet('q_and_a')   # Retrieves the worksheet
-    # Creates a DataFrame using the data retrieved from 'q_and_a'
-    df_answers = pd.DataFrame(data[1:], columns=data[0])
-    #Calculates the number of columns in the DataFrame
-    column_keys = len(df_answers.columns)
-
-    for column in range(1, column_keys + 1):
-        display_questions_and_options(column)
-    
-    submit_option()
-
-
-# get_survey()
-
-
-def update_answer():
+def update_survey_answer():
     """
     This is to update the user's answer into the sheet survey_answer
     """
@@ -117,10 +94,7 @@ def update_answer():
     print('The result updated.\n')
 
 
-# update_answer()
-
-
-def submit_option():
+def submit_option(options):
     """
     Display option for user to submit the survey.
     """
@@ -144,9 +118,6 @@ def submit_option():
         exit()
 
 
-# submit_option()
-
-
 def main_page():
     """
     This function allow user to choose whether to take the survey
@@ -159,19 +130,17 @@ def main_page():
             print('2. No and Exit')
             print()
             select = int(input('Please enter your choice: '))
+            print()
 
             if select != 1 and select != 2:
                 print('Invalid Number!')
         except ValueError:
             print('Please enter a valid number 1 or 2')
     if select == 1:
-        display_questions_and_options(column)
+        clear_scr()
+        age_group()
     elif select == 2:
-        end()
-
-
-# main_page()
-
+        exit()
 
 def welcome():
     """
@@ -196,9 +165,6 @@ def welcome():
     print()
     # clear_scr()
     main_page()
-
-
-# welcome()
 
 
 def end():

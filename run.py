@@ -35,12 +35,12 @@ BRIGHT = Style.BRIGHT       # Text bright
 
 # To access the data in the worksheet, parameter name same as sheet name.
 text = SHEET.worksheet('text')
-# q_and_a = SHEET.worksheet('q_and_a')
-# survey_answer = SHEET.worksheet('survey_answer')
+q_and_a = SHEET.worksheet('q_and_a')
+survey_answer = SHEET.worksheet('survey_answer')
 # To pull all values from the sheet.
 data = text.get_all_values()
-# data2 = q_and_a.get_all_values()
-# data3 = survey_answer.get_all_values()
+data2 = q_and_a.get_all_values()
+data3 = survey_answer.get_all_values()
 # print(data)
 # print()
 # print(data2)
@@ -88,6 +88,7 @@ def age_group():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
+    # This is to go to function gender() next
     gender()
 
 
@@ -118,6 +119,7 @@ def gender():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
+    # This is to go to function continents() next
     continents()
 
 
@@ -148,6 +150,7 @@ def continents():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
+    # This is to go to function destination_prefer() next
     destination_prefer()
 
 
@@ -178,6 +181,7 @@ def destination_prefer():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
+    # This is to go to function planning() next
     planning()
 
 
@@ -208,6 +212,7 @@ def planning():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
+    # This is to go to function motivations() next
     motivations()
 
 
@@ -238,15 +243,52 @@ def motivations():
                 print()
         except ValueError:
             print("Please Enter a Valid Number.")
-    print()    
+    print()
+    # This is to go to function influences_decision() next
+    influences_decision()
 
 
-def update_survey_answer():
+def influences_decision():
+    """
+    Seventh question in the survey
+    """
+    print('Q7. What influences yourdeision making?')
+    print()
+    # Choice is for choice of answer
+    choice = ['Clean and Tidiness', 'Price',
+    'Online Review', 'Safe and Security', 'Travel Blog', 'All of the Above']
+    #This is to print index number start with 1 in the choice
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(choice):
+        try:
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
+                # As index always start with 0
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print('Please Enter a Valid Number.')
+    print()
+    end()2
+    
+
+
+def update_survey_answer(age, gender, continent):
     """
     This is to update the user's answer into the sheet survey_answer
     """
     print('Updating result, please wait...\n')
-    SHEET.worksheet('survey_answer').append_row(data)
+    answer = [age, gender, continent]
+    SHEET.worksheet('survey_answer').append_row(answer)
     print('The result updated.\n')
 
 
@@ -344,7 +386,7 @@ def end():
     if select == 1:
         """
         Retrieve message from sheet 'text' the third column
-        """ 
+        """
         goodbye_msg = SHEET.worksheet('text').col_values(3)
         print(BLUE + goodbye_msg[1].upper() + RESET)
         time.sleep(3)

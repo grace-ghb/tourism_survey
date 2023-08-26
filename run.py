@@ -34,14 +34,14 @@ RESET = Style.RESET_ALL     # Resets all the color to default
 BRIGHT = Style.BRIGHT       # Text bright
 
 # To access the data in the worksheet, parameter name same as sheet name.
-text = SHEET.worksheet('text')
-q_and_a = SHEET.worksheet('q_and_a')
-survey_answer = SHEET.worksheet('survey_answer')
+text = SHEET.worksheet('text').get_all_values()
+q_and_a = SHEET.worksheet('q_and_a').get_all_values()
+survey_answer = SHEET.worksheet('survey_answer').get_all_values()
 # To pull all values from the sheet.
-data = text.get_all_values()
-data2 = q_and_a.get_all_values()
-data3 = survey_answer.get_all_values()
-# print(data)
+# data = text.get_all_values()
+# data2 = q_and_a.get_all_values()
+# data3 = survey_ans.get_all_values()
+# print(text)
 # print()
 # print(data2)
 # print()
@@ -66,27 +66,29 @@ def age_group():
     Question 1 from sheet q_and_a
     """
     print('Q1. What is your age?')
-    age_choice = ['10-18', '19-30', '31-45', '46-60', '61 and Above']
+    print()
+    # Choice is for choice of answer
+    choice = ['10-18', '19-30', '31-45', '46-60', '61 and Above']
     # This is to print index number start with 1 in the choice
-    for index, age_range in enumerate(age_choice, start=1):
-        print(f"{index}. {age_range}")    
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
     print()
     user_input = 0
-    while user_input < 1 or user_input > len(age_choice):
+    while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input("Enter your choice: "))
-            if user_input >= 1 and user_input <= len(age_choice):
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
-                # user_input-1 is to get the correct number in index
-                selected_age_range = age_choice[user_input-1]
-                print()
-                print(f"You have selected: {selected_age_range}")
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
             else:
                 print()
                 print('Invalid input! Please try again.')
                 print()
         except ValueError:
-            print("Please Enter a Valid Number.")
+            print('Please Enter a Valid Number.')
     print()
     # This is to go to function gender() next
     gender()
@@ -97,27 +99,29 @@ def gender():
     Question 2 from sheet q_and_a
     """
     print('Q2. What is your gender?')
-    gender_choice = ['Male', 'Female']
+    print()
+    # Choice is for choice of answer
+    choice = ['Male', 'Female']
     # This is to print index number start with 1 in the choice
-    for index, gender_range in enumerate(gender_choice, start=1):
-        print(f"{index}. {gender_range}")    
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
     print()
     user_input = 0
-    while user_input < 1 or user_input > len(gender_choice):
+    while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input("Enter your choice: "))
-            if user_input >= 1 and user_input <= len(gender_choice):
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
-                # user_input-1 is to get the correct number in index
-                selected_gender = gender_choice[user_input-1]
-                print()
-                print(f"You have selected: {selected_gender}")
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
             else:
                 print()
                 print('Invalid input! Please try again.')
                 print()
         except ValueError:
-            print("Please Enter a Valid Number.")
+            print('Please Enter a Valid Number.')
     print()
     # This is to go to function continents() next
     continents()
@@ -128,27 +132,29 @@ def continents():
     Question 3 from sheet q_and_a
     """
     print('Q3. Which continent are you from?')
-    continent_choice = ['Asia', 'Africa', 'North America', 'South America', 'Antartica', 'Europe', 'Australia']
+    print()
+    # Choice is for choice of answer
+    choice = ['Asia', 'Africa', 'North America', 'South America', 'Antartica', 'Europe', 'Australia']
     # This is to print index number start with 1 in the choice
-    for index, continent_range in enumerate(continent_choice, start=1):
-        print(f"{index}. {continent_range}")    
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
     print()
     user_input = 0
-    while user_input < 1 or user_input > len(continent_choice):
+    while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input("Enter your choice: "))
-            if user_input >= 1 and user_input <= len(continent_choice):
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
-                # user_input-1 is to get the correct number in index
-                selected_continent = continent_choice[user_input-1]
-                print()
-                print(f"You have selected: {selected_continent}")
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
             else:
                 print()
                 print('Invalid input! Please try again.')
                 print()
         except ValueError:
-            print("Please Enter a Valid Number.")
+            print('Please Enter a Valid Number.')
     print()
     # This is to go to function destination() next
     destination()
@@ -159,27 +165,29 @@ def destination():
     Question 4 from sheet q_and_a
     """
     print('Q4. What type of destination do you prefer?')
-    destination_choice = ['Beach', 'Culture', 'Mountain', 'Suburban', 'Urban']
+    print()
+    # Choice is for choice of answer
+    choice = ['Beach', 'Culture', 'Mountain', 'Suburban', 'Urban']
     # This is to print index number start with 1 in the choice
-    for index, destination_range in enumerate(destination_choice, start=1):
-        print(f"{index}. {destination_range}")    
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
     print()
     user_input = 0
-    while user_input < 1 or user_input > len(destination_choice):
+    while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input("Enter your choice: "))
-            if user_input >= 1 and user_input <= len(destination_choice):
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
-                # user_input-1 is to get the correct number in index
-                selected_destination = destination_choice[user_input-1]
-                print()
-                print(f"You have selected: {selected_destination}")
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
             else:
                 print()
                 print('Invalid input! Please try again.')
                 print()
         except ValueError:
-            print("Please Enter a Valid Number.")
+            print('Please Enter a Valid Number.')
     print()
     # This is to go to function planning() next
     planning()
@@ -191,26 +199,28 @@ def planning():
     """
     print('Q5. How do you plan your trip?')
     print()
-    planning_choice = ['Through Agencies', 'Recommendations', 'Online']
+    # Choice is for choice of answer
+    choice = ['Through Agencies', 'Recommendations', 'Online']
     # This is to print index number start with 1 in the choice
-    for index, planning_range in enumerate(planning_choice, start=1):
-        print(f"{index}. {planning_range}")    
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
     print()
     user_input = 0
-    while user_input < 1 or user_input > len(planning_choice):
+    while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input("Enter your choice: "))
-            if user_input >= 1 and user_input <= len(planning_choice):
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
-                # user_input-1 is to get the correct number in index
-                selected_planning = planning_choice[user_input-1]
-                print(f"You have selected: {selected_planning}")
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
             else:
                 print()
                 print('Invalid input! Please try again.')
                 print()
         except ValueError:
-            print("Please Enter a Valid Number.")
+            print('Please Enter a Valid Number.')
     print()
     # This is to go to function motivations() next
     motivations()
@@ -222,27 +232,30 @@ def motivations():
     """
     print('Q6. What is the motivations for travel?')
     print()
-    motivations_choice = ['Cultural', 'Foods', 'Relaxation', 'Price',
+    # Choice is for choice of answer
+    choice = ['Cultural', 'Foods', 'Relaxation', 'Price', 
     'Shopping', 'All of the above']
     # This is to print index number start with 1 in the choice
-    for index, motivations_range in enumerate(motivations_choice, start=1):
-        print(f"{index}. {motivations_range}")    
+    # This is to print index number start with 1 in the choice
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
     print()
     user_input = 0
-    while user_input < 1 or user_input > len(motivations_choice):
+    while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input("Enter your choice: "))
-            if user_input >= 1 and user_input <= len(motivations_choice):
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
-                # user_input-1 is to get the correct number in index
-                selected_motivations = motivations_choice[user_input-1]
-                print(f"You have selected: {selected_motivations}")
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
             else:
                 print()
                 print('Invalid input! Please try again.')
                 print()
         except ValueError:
-            print("Please Enter a Valid Number.")
+            print('Please Enter a Valid Number.')
     print()
     # This is to go to function decision() next
     decision()
@@ -278,6 +291,7 @@ def decision():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
+    # This is to go to function accommodation() next
     accommodation()
 
 
@@ -409,16 +423,15 @@ def return_holiday():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
-    # submit_option()
+    update_survey_answer(survey_answer)
 
 
-def update_survey_answer(age, gender, continent):
+def update_survey_answer(survey_answer):
     """
     This is to update the user's answer into the sheet survey_answer
     """
     print('Updating result, please wait...\n')
-    answer = [age, gender, continent]
-    SHEET.worksheet('survey_answer').append_row(answer)
+    SHEET.worksheet("survey_answer").append_row(survey_answer)
     print('The result updated.\n')
 
 
@@ -441,7 +454,7 @@ def submit_option(options):
         except ValueError:
             print('Invalid Input!')
     if user_input == 1:
-        end()
+        update_survey_answer(data3)
     elif user_input == 2:
         exit()
 

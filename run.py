@@ -63,7 +63,7 @@ user_choice = []
 
 def age_group():
     """
-    First question in the survey
+    Question 1 from sheet q_and_a
     """
     print('Q1. What is your age?')
     age_choice = ['10-18', '19-30', '31-45', '46-60', '61 and Above']
@@ -94,7 +94,7 @@ def age_group():
 
 def gender():
     """
-    Second question in the survey
+    Question 2 from sheet q_and_a
     """
     print('Q2. What is your gender?')
     gender_choice = ['Male', 'Female']
@@ -125,7 +125,7 @@ def gender():
 
 def continents():
     """
-    Third question in the survey
+    Question 3 from sheet q_and_a
     """
     print('Q3. Which continent are you from?')
     continent_choice = ['Asia', 'Africa', 'North America', 'South America', 'Antartica', 'Europe', 'Australia']
@@ -150,13 +150,13 @@ def continents():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
-    # This is to go to function destination_prefer() next
-    destination_prefer()
+    # This is to go to function destination() next
+    destination()
 
 
-def destination_prefer():
+def destination():
     """
-    Fourth question in the survey
+    Question 4 from sheet q_and_a
     """
     print('Q4. What type of destination do you prefer?')
     destination_choice = ['Beach', 'Culture', 'Mountain', 'Suburban', 'Urban']
@@ -187,7 +187,7 @@ def destination_prefer():
 
 def planning():
     """
-    Fifth question in the survey
+    Question 5 from sheet q_and_a
     """
     print('Q5. How do you plan your trip?')
     print()
@@ -218,7 +218,7 @@ def planning():
 
 def motivations():
     """
-    Sixth question in the survey
+    Question 6 from sheet q_and_a
     """
     print('Q6. What is the motivations for travel?')
     print()
@@ -244,20 +244,20 @@ def motivations():
         except ValueError:
             print("Please Enter a Valid Number.")
     print()
-    # This is to go to function influences_decision() next
-    influences_decision()
+    # This is to go to function decision() next
+    decision()
 
 
-def influences_decision():
+def decision():
     """
-    Seventh question in the survey
+    Question 7 from sheet q_and_a
     """
-    print('Q7. What influences yourdeision making?')
+    print('Q7. What influences your deision making?')
     print()
     # Choice is for choice of answer
     choice = ['Clean and Tidiness', 'Price',
     'Online Review', 'Safe and Security', 'Travel Blog', 'All of the Above']
-    #This is to print index number start with 1 in the choice
+    # This is to print index number start with 1 in the choice
     for index, range in enumerate(choice, start=1):
         print(f'{index}.{range}')
     print()
@@ -278,8 +278,138 @@ def influences_decision():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
-    end()2
-    
+    accommodation()
+
+
+def accommodation():
+    """
+    Question 8 from sheet q_and_a
+    """
+    print('Q8. What type of accommodation do you prefer?')
+    print()
+    # Choice is for choice of answer
+    choice = ['Bed and Breakfast', 'Hotels',
+    'Hostel', 'Resort', 'All of the Above']
+    # This is to print index number start with 1 in the choice
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(choice):
+        try:
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
+                # As index always start with 0
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print('Please Enter a Valid Number.')
+    print()
+    spending()
+
+
+def spending():
+    """
+    Question 9 from sheet q_and_a
+    """
+    print('Q9. What are you more likely to spend on during your trip?')
+    print()
+    # Choice is for choice of answer
+    choice = ['Experiences', 'Foods', 'Shopping', 'All of the Above']
+    # This is to print index number start with 1 in the choice
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(choice):
+        try:
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
+                # As index always start with 0
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print('Please Enter a Valid Number.')
+    print()
+    experiences()
+
+
+def experiences():
+    """
+    Question 10 from sheet q_and_a
+    """
+    print('Q10. How likely will you share your experiences on social media?')
+    print('     Choose from 1 for unlikely to 5 very likely')
+    print()
+    # Choice is for choice of answer
+    choice = ['1', '2', '3', '4', '5']
+    # This is to print index number start with 1 in the choice
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(choice):
+        try:
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
+                # As index always start with 0
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print('Please Enter a Valid Number.')
+    print()
+    return_holiday()
+
+
+def return_holiday():
+    """
+    Question 11 from sheet q_and_a
+    """
+    print('Q11. How likely would you like to come back for a holiday?')
+    print('     Choose from 1 for unlikely to 5 very likely')
+    print()
+    # Choice is for choice of answer
+    choice = ['1', '2', '3', '4', '5']
+    # This is to print index number start with 1 in the choice
+    for index, range in enumerate(choice, start=1):
+        print(f'{index}.{range}')
+    print()
+    user_input = 0
+    while user_input < 1 or user_input > len(choice):
+        try:
+            user_input = int(input('Enter your choice: '))
+            if user_input >= 1 and user_input <= len(choice):
+                # As index always start with 0
+                # user_input - 1 is to get the correct number in index
+                # Selected is for selected influences decision
+                selected = choice[user_input - 1]
+                print(f'You have selected: {selected}')
+            else:
+                print()
+                print('Invalid input! Please try again.')
+                print()
+        except ValueError:
+            print('Please Enter a Valid Number.')
+    print()
+    # submit_option()
 
 
 def update_survey_answer(age, gender, continent):
@@ -320,25 +450,23 @@ def main_page():
     """
     This function allow user to choose whether to take the survey
     """
-    select = 0
-    while select != 1 and select != 2:
-        try:
-            print('Select an option: ')
-            print('1. Take the survey')
-            print('2. No and Exit')
-            print()
-            select = int(input('Please enter your choice: '))
-            print()
-
-            if select != 1 and select != 2:
-                print('Invalid Number!')
-        except ValueError:
-            print('Please enter a valid number 1 or 2')
+    print('Select an option: ')
+    print('1. Take the survey')
+    print('2. No and Exit')
+    print()
+    select = int(input('Please enter your choice: '))
+    print()
     if select == 1:
         clear_scr()
         age_group()
-    elif select == 2:
-        exit()
+        print()
+    elif select < 1 or select > 2:
+        print('Invalid Input! Please Try Again.')
+        print()
+        main_page()
+    else:
+        print('You Choose To EXIT. Thank You Very Much.')
+        print()
 
 
 def welcome():

@@ -92,7 +92,6 @@ def age_group():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
-    # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
     # This is to go to function gender() next
     gender()
@@ -129,7 +128,6 @@ def gender():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
-    # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
     # This is to go to function continents() next
     # continents()
@@ -159,7 +157,7 @@ def return_holiday():
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
                 print(f'You have selected: {selected}')
-                # Update the user's andswer in the list
+                 # Update the user's andswer in the list
                 user_choice = [selected]
                 
             else:
@@ -178,8 +176,7 @@ def update_survey_answer(user_choice):
     This is to update the user's answer into the sheet survey_answer
     """
     print('Updating result, please wait...\n')
-    survey_answer = SHEET.worksheet("survey_answer")
-    survey_answer.append_row(user_choice)
+    SHEET.worksheet("survey_answer").append_row(user_choice)
     print('The result updated.\n')
 
 
@@ -249,10 +246,6 @@ def welcome():
     print(RED + instruction[1].upper() + RESET)
     print()
     print(instruction[2].upper())
-    print()
-    print(instruction[3].upper())
-    print(instruction[4].upper())
-    print(instruction[5].upper())
     print()
     input(Fore.CYAN + 'Press enter to continue...' + RESET)
     print()

@@ -42,7 +42,7 @@ survey_answer = SHEET.worksheet('survey_answer').get_all_values()
 # data2 = q_and_a.get_all_values()
 # data3 = survey_ans.get_all_values()
 # print(text)
-print(q_and_a)
+# print()
 # print(data2)
 # print()
 # print(data3)
@@ -58,7 +58,7 @@ def clear_scr():
 
 
 # Global variable for result
-user_choice = ['', '', '', '', '', '', '', '', '', '', '']
+user_choice = []
 
 
 def age_group():
@@ -83,8 +83,6 @@ def age_group():
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
                 print(f'You have selected: {selected}')
-                # Update the user's andswer in the list
-                user_choice[0] = selected
             else:
                 print()
                 print('Invalid input! Please try again.')
@@ -92,8 +90,6 @@ def age_group():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function gender() next
     gender()
 
@@ -120,8 +116,6 @@ def gender():
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
                 print(f'You have selected: {selected}')
-                # Update the user's andswer in the list
-                user_choice[0] = selected
             else:
                 print()
                 print('Invalid input! Please try again.')
@@ -129,61 +123,20 @@ def gender():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function continents() next
     # continents()
-    return_holiday()
 
 
-def return_holiday():
-    """
-    Question 11 from sheet q_and_a
-    """
-    print('Q11. How likely would you like to come back for a holiday?')
-    print('     Choose from 1 for unlikely to 5 very likely')
-    print()
-    # Choice is for choice of answer
-    choice = ['1', '2', '3', '4', '5']
-    # This is to print index number start with 1 in the choice
-    for index, range in enumerate(choice, start=1):
-        print(f'{index}.{range}')
-    print()
-    user_input = 0
-    while user_input < 1 or user_input > len(choice):
-        try:
-            user_input = int(input('Enter your choice: '))
-            if user_input >= 1 and user_input <= len(choice):
-                # As index always start with 0
-                # user_input - 1 is to get the correct number in index
-                # Selected is for selected influences decision
-                selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
-                # Update the user's andswer in the list
-                user_choice = [selected]
-                
-            else:
-                print()
-                print('Invalid input! Please try again.')
-                print()
-        except ValueError:
-            print('Please Enter a Valid Number.')
-    print()
-    update_survey_answer(user_choice)
-    submit_option(user_choice)
-
-
-def update_survey_answer(user_choice):
+def update_survey_answer(selected):
     """
     This is to update the user's answer into the sheet survey_answer
     """
     print('Updating result, please wait...\n')
-    survey_answer = SHEET.worksheet("survey_answer")
-    survey_answer.append_row(user_choice)
+    SHEET.worksheet("survey_answer").append_row(selected)
     print('The result updated.\n')
 
 
-def submit_option(user_choice):
+def submit_option(options):
     """
     Display option for user to submit the survey.
     """
@@ -202,8 +155,7 @@ def submit_option(user_choice):
         except ValueError:
             print('Invalid Input!')
     if user_input == 1:
-        print('You choose to Submit the survey.')
-        time.sleep(3)
+        update_survey_answer(data3)
     elif user_input == 2:
         exit()
 
@@ -249,10 +201,6 @@ def welcome():
     print(RED + instruction[1].upper() + RESET)
     print()
     print(instruction[2].upper())
-    print()
-    print(instruction[3].upper())
-    print(instruction[4].upper())
-    print(instruction[5].upper())
     print()
     input(Fore.CYAN + 'Press enter to continue...' + RESET)
     print()

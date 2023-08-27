@@ -26,8 +26,10 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 # To access 'tourism_survey' sheet, name must be same as sheet.
 SHEET = GSPREAD_CLIENT.open('tourism_survey')
 
-
-RED = Fore.RED      # Red color text
+"""
+This is for color style text
+"""
+B_RED = Fore.RED + Style.BRIGHT      # Bright red color text
 B_YELLOW = Fore.YELLOW + Style.BRIGHT    # Brihgt yellow color 
 WHITE = Fore.WHITE      # White color
 BLUE = Fore.BLUE    # Blue color text
@@ -79,25 +81,25 @@ def age_group():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is to updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time
+    time.sleep(3-2)
     # This is to go to function gender() next
     gender()
 
@@ -106,6 +108,7 @@ def gender():
     """
     Question 2 from sheet q_and_a
     """
+    clear_scr()
     print('Q2. What is your gender?')
     print()
     # Choice is for choice of answer
@@ -117,24 +120,25 @@ def gender():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function continents() next
     continents()
 
@@ -143,6 +147,7 @@ def continents():
     """
     Question 3 from sheet q_and_a
     """
+    clear_scr()
     print('Q3. Which continent are you from?')
     print()
     # Choice is for choice of answer
@@ -154,24 +159,25 @@ def continents():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function destination() next
     destination()
 
@@ -180,6 +186,7 @@ def destination():
     """
     Question 4 from sheet q_and_a
     """
+    clear_scr()
     print('Q4. What type of destination do you prefer?')
     print()
     # Choice is for choice of answer
@@ -191,24 +198,25 @@ def destination():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)    
+    update_survey_answer(user_choice) 
+    time.sleep(2)
     # This is to go to function planning() next
     planning()
 
@@ -217,6 +225,7 @@ def planning():
     """
     Question 5 from sheet q_and_a
     """
+    clear_scr()
     print('Q5. How do you plan your trip?')
     print()
     # Choice is for choice of answer
@@ -228,24 +237,25 @@ def planning():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function motivations() next
     motivations()
 
@@ -254,6 +264,7 @@ def motivations():
     """
     Question 6 from sheet q_and_a
     """
+    clear_scr()
     print('Q6. What is the motivations for travel?')
     print()
     # Choice is for choice of answer
@@ -267,24 +278,25 @@ def motivations():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function decision() next
     decision()
 
@@ -293,6 +305,7 @@ def decision():
     """
     Question 7 from sheet q_and_a
     """
+    clear_scr()
     print('Q7. What influences your deision making?')
     print()
     # Choice is for choice of answer
@@ -305,24 +318,25 @@ def decision():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function accommodation() next
     accommodation()
 
@@ -331,6 +345,7 @@ def accommodation():
     """
     Question 8 from sheet q_and_a
     """
+    clear_scr()
     print('Q8. What type of accommodation do you prefer?')
     print()
     # Choice is for choice of answer
@@ -343,24 +358,25 @@ def accommodation():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function spending() next
     spending()
 
@@ -369,6 +385,7 @@ def spending():
     """
     Question 9 from sheet q_and_a
     """
+    clear_scr()
     print('Q9. What are you more likely to spend on during your trip?')
     print()
     # Choice is for choice of answer
@@ -380,24 +397,25 @@ def spending():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function continents() next
     experiences()
 
@@ -406,6 +424,7 @@ def experiences():
     """
     Question 10 from sheet q_and_a
     """
+    clear_scr()
     print('Q10. How likely will you share your experiences on social media?')
     print('     Choose from 1 for unlikely to 5 very likely')
     print()
@@ -418,24 +437,25 @@ def experiences():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time.sleep(2)
     # This is to go to function continents() next
     return_holiday()
 
@@ -444,6 +464,7 @@ def return_holiday():
     """
     Question 11 from sheet q_and_a
     """
+    clear_scr()
     print('Q11. How likely would you like to come back for a holiday?')
     print('     Choose from 1 for unlikely to 5 very likely')
     print()
@@ -456,28 +477,29 @@ def return_holiday():
     user_input = 0
     while user_input < 1 or user_input > len(choice):
         try:
-            user_input = int(input('Enter your choice: '))
+            user_input = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
             if user_input >= 1 and user_input <= len(choice):
                 # As index always start with 0
                 # user_input - 1 is to get the correct number in index
                 # Selected is for selected influences decision
                 selected = choice[user_input - 1]
-                print(f'You have selected: {selected}')
+                print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
                 user_choice[0] = selected
             else:
                 print()
-                print('Invalid input! Please try again.')
+                print(B_RED+'Invalid input! Please try again.'+RESET)
                 print()
         except ValueError:
-            print('Please Enter a Valid Number.')
+            print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     
     # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
-    print('Updating result, please wait...\n')    
-    print('The result updated.\n')
-    time.sleep(10)
+    update_survey_answer(user_choice)    
+    print(B_YELLOW + f'Updating result, please wait...' + RESET)
+    time.sleep(8)
+    print(B_YELLOW + f'The result updated.\n' + RESET)
+    print()
     submit_option(user_choice)
 
 
@@ -495,6 +517,7 @@ def submit_option(user_choice):
     """
     Display option for user to submit the survey.
     """
+    clear_scr()
     print('Thank you for completing the survey\n\n'.upper())
     print
     print('1. Submit\n'.upper())
@@ -503,41 +526,48 @@ def submit_option(user_choice):
     user_input = 0
     while user_input != 1 and user_input != 2:
         try:
-            user_input = int(input('Please enter your choice: '))
+            user_input = int(input(B_YELLOW+'Please enter your choice: '+RESET))
             if user_input != 1 and user_input != 2:
-                print('Invalid Number!')
-                print('Please enter number 1 or 2')
+                print(B_RED+'Invalid Number!'+RESET)
+                print(B_CYAN+'Please enter number 1 or 2'+RESET)
         except ValueError:
-            print('Invalid Input!')
+            print(B_RED+'Invalid Input!'+RESET)
     if user_input == 1:
-        print('You choose to Submit the survey.')
+        print(B_YELLOW+'You choose to Submit the survey.'+RESET)
+        print()
+        print(B_CYAN+"Thank you for completing the survey"+RESET)
         time.sleep(3)
+        end()
     elif user_input == 2:
-        print('You choose to EXIT the survey.')
-        exit()
+        print(B_YELLOW+'You choose to EXIT the survey.'+RESET)
+        exit()       
 
 
 def home_page():
     """
     This function allow user to choose whether to take the survey
     """
-    print('Select an option: ')
+    clear_scr()
+    print('Select an option: \n')
     print('1. Take the survey')
     print('2. No and Exit')
     print()
-    select = int(input('Please enter your choice: '))
+    select = int(input(B_YELLOW + 'Please enter your choice: ' + RESET))
     print()
     if select == 1:
         clear_scr()
         age_group()
         print()
     elif select < 1 or select > 2:
-        print('Invalid Input! Please Try Again.')
+        print(B_RED+'Invalid Input! Please Try Again.'+RESET)
         print()
         home_page()
     else:
-        print('You Choose To EXIT. Thank You Very Much.')
+        print(B_CYAN+'You Choose To EXIT. Thank You Very Much.'+RESET)
         print()
+        time.sleep(5)
+        clear_scr()
+        end()
 
 
 def welcome():
@@ -566,7 +596,7 @@ def welcome():
     print(instruction[6].upper())
     print(instruction[7].upper())
     print()
-    input(B_YELLOW + 'Press enter to continue...' + RESET)
+    input(B_YELLOW + '                      ...Press enter to continue' + RESET)
     # input(colored('Press enter to continue...', 'blue', 'on_yellow'))
     print()
     # clear_scr()
@@ -584,20 +614,24 @@ def end():
             print('Are you sure you want to exit?\n')
             print('1. Yes')
             print('2. No')
-            select = int(input('Enter your choice: '))
+            select = int(input(B_YELLOW + 'Enter your choice: ' + RESET))
+            print()
             if select != 1 and select != 2:
-                print('Invalid number! Please enter 1 or 2')
+                print(B_RED+'Invalid number! Please enter 1 or 2'+RESET)
         except ValueError:
-            print('Please enter a valid number.')
+            print(B_CYAN+'Please enter a valid number.'+RESET)
 
     if select == 1:
         """
         Retrieve message from sheet 'text' the third column
         """
+        print(B_CYAN+'You choose to EXIT.'+RESET)
+        time.sleep(3)
+        clear_scr()
         goodbye_msg = SHEET.worksheet('text').col_values(3)
         print(BLUE + goodbye_msg[1].upper() + RESET)
         print(BLUE + goodbye_msg[2].upper() + RESET)
-        time.sleep(5)
+        print()
         exit()
     elif select == 2:
         main_page()

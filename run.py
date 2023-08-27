@@ -472,6 +472,7 @@ def return_holiday():
     update_survey_answer(user_choice)
     submit_option(user_choice)
 
+
 def update_survey_answer(user_choice):
     """
     This is to update the user's answer into the sheet survey_answer

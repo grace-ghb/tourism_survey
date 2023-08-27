@@ -28,10 +28,13 @@ SHEET = GSPREAD_CLIENT.open('tourism_survey')
 
 
 RED = Fore.RED      # Red color text
-YELLOW = Fore.YELLOW    # Yellow color text
+B_YELLOW = Fore.YELLOW + Style.BRIGHT    # Brihgt yellow color 
+WHITE = Fore.WHITE      # White color
 BLUE = Fore.BLUE    # Blue color text
-RESET = Style.RESET_ALL     # Resets all the color to default
+B_CYAN = Fore.CYAN + Style.BRIGHT   # Bright Cyan 
 BRIGHT = Style.BRIGHT       # Text bright
+RESET = Style.RESET_ALL     # Resets all the color to default
+
 
 # To access the data in the worksheet, parameter name same as sheet name.
 text = SHEET.worksheet('text').get_all_values()
@@ -94,6 +97,7 @@ def age_group():
     print()
     # This is to updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    time
     # This is to go to function gender() next
     gender()
 
@@ -468,8 +472,12 @@ def return_holiday():
         except ValueError:
             print('Please Enter a Valid Number.')
     print()
+    
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
+    print('Updating result, please wait...\n')    
+    print('The result updated.\n')
+    time.sleep(10)
     submit_option(user_choice)
 
 
@@ -477,10 +485,10 @@ def update_survey_answer(user_choice):
     """
     This is to update the user's answer into the sheet survey_answer
     """
-    print('Updating result, please wait...\n')
-    survey_answer = SHEET.worksheet("survey_answer")
+    # print('Updating result, please wait...\n')
+    survey_answer = SHEET.worksheet("survey_answer")    
     survey_answer.append_row(user_choice)
-    print('The result updated.\n')
+    # print('The result updated.\n')
 
 
 def submit_option(user_choice):
@@ -505,10 +513,11 @@ def submit_option(user_choice):
         print('You choose to Submit the survey.')
         time.sleep(3)
     elif user_input == 2:
+        print('You choose to EXIT the survey.')
         exit()
 
 
-def main_page():
+def home_page():
     """
     This function allow user to choose whether to take the survey
     """
@@ -525,7 +534,7 @@ def main_page():
     elif select < 1 or select > 2:
         print('Invalid Input! Please Try Again.')
         print()
-        main_page()
+        home_page()
     else:
         print('You Choose To EXIT. Thank You Very Much.')
         print()
@@ -538,22 +547,30 @@ def welcome():
     welcome_text = SHEET.worksheet('text').col_values(1)
     instruction = SHEET.worksheet('text').col_values(2)
     print()
-    print(welcome_text[1])
+    print(B_YELLOW + welcome_text[1].upper() + RESET)
     print()
     print()
-    print(Fore.CYAN + 'System loading...' + RESET)
-    time.sleep(3)
+    print(B_YELLOW + 'System loading...' + RESET)
+    time.sleep(5)
     print()
     clear_scr()
     print()
-    print(RED + instruction[1].upper() + RESET)
+    print(B_YELLOW + instruction[1].upper() + RESET)
     print()
     print(instruction[2].upper())
     print()
-    input(Fore.CYAN + 'Press enter to continue...' + RESET)
+    print(instruction[3].upper())
+    print(instruction[4].upper())
+    print()
+    print(instruction[5].upper())
+    print(instruction[6].upper())
+    print(instruction[7].upper())
+    print()
+    input(B_YELLOW + 'Press enter to continue...' + RESET)
+    # input(colored('Press enter to continue...', 'blue', 'on_yellow'))
     print()
     # clear_scr()
-    main_page()
+    home_page()
 
 
 def end():
@@ -579,7 +596,8 @@ def end():
         """
         goodbye_msg = SHEET.worksheet('text').col_values(3)
         print(BLUE + goodbye_msg[1].upper() + RESET)
-        time.sleep(3)
+        print(BLUE + goodbye_msg[2].upper() + RESET)
+        time.sleep(5)
         exit()
     elif select == 2:
         main_page()

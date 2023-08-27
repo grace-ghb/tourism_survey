@@ -30,10 +30,10 @@ SHEET = GSPREAD_CLIENT.open('tourism_survey')
 This is for color style text
 """
 B_RED = Fore.RED + Style.BRIGHT      # Bright red color text
-B_YELLOW = Fore.YELLOW + Style.BRIGHT    # Brihgt yellow color 
+B_YELLOW = Fore.YELLOW + Style.BRIGHT    # Brihgt yellow color
 WHITE = Fore.WHITE      # White color
 BLUE = Fore.BLUE    # Blue color text
-B_CYAN = Fore.CYAN + Style.BRIGHT   # Bright Cyan 
+B_CYAN = Fore.CYAN + Style.BRIGHT   # Bright Cyan
 BRIGHT = Style.BRIGHT       # Text bright
 RESET = Style.RESET_ALL     # Resets all the color to default
 
@@ -58,7 +58,7 @@ def clear_scr():
     """
     This function is for clear screen for different OS
     Call the clear_scr funtion to clear the terminal
-    """    
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
@@ -151,7 +151,8 @@ def continents():
     print('Q3. Which continent are you from?')
     print()
     # Choice is for choice of answer
-    choice = ['Asia', 'Africa', 'North America', 'South America', 'Antartica', 'Europe', 'Australia']
+    choice = ['Asia', 'Africa', 'North America',
+              'South America', 'Antartica', 'Europe', 'Australia']
     # This is to print index number start with 1 in the choice
     for index, range in enumerate(choice, start=1):
         print(f'{index}.{range}')
@@ -215,7 +216,7 @@ def destination():
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice) 
+    update_survey_answer(user_choice)
     time.sleep(2)
     # This is to go to function planning() next
     planning()
@@ -268,8 +269,8 @@ def motivations():
     print('Q6. What is the motivations for travel?')
     print()
     # Choice is for choice of answer
-    choice = ['Cultural', 'Foods', 'Relaxation', 'Price', 
-    'Shopping', 'All of the above']
+    choice = ['Cultural', 'Foods', 'Relaxation', 'Price',
+              'Shopping', 'All of the above']
     # This is to print index number start with 1 in the choice
     # This is to print index number start with 1 in the choice
     for index, range in enumerate(choice, start=1):
@@ -309,8 +310,8 @@ def decision():
     print('Q7. What influences your deision making?')
     print()
     # Choice is for choice of answer
-    choice = ['Clean and Tidiness', 'Price',
-    'Online Review', 'Safe and Security', 'Travel Blog', 'All of the Above']
+    choice = ['Clean and Tidiness', 'Price', 'Online Review',
+              'Safe and Security', 'Travel Blog', 'All of the Above']
     # This is to print index number start with 1 in the choice
     for index, range in enumerate(choice, start=1):
         print(f'{index}.{range}')
@@ -350,7 +351,7 @@ def accommodation():
     print()
     # Choice is for choice of answer
     choice = ['Bed and Breakfast', 'Hotels',
-    'Hostel', 'Resort', 'All of the Above']
+              'Hostel', 'Resort', 'All of the Above']
     # This is to print index number start with 1 in the choice
     for index, range in enumerate(choice, start=1):
         print(f'{index}.{range}')
@@ -493,9 +494,8 @@ def return_holiday():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    
     # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)    
+    update_survey_answer(user_choice)
     print(B_YELLOW + f'Updating result, please wait...' + RESET)
     time.sleep(8)
     print(B_YELLOW + f'The result updated.\n' + RESET)
@@ -508,7 +508,7 @@ def update_survey_answer(user_choice):
     This is to update the user's answer into the sheet survey_answer
     """
     # print('Updating result, please wait...\n')
-    survey_answer = SHEET.worksheet("survey_answer")    
+    survey_answer = SHEET.worksheet("survey_answer")
     survey_answer.append_row(user_choice)
     # print('The result updated.\n')
 
@@ -526,7 +526,9 @@ def submit_option(user_choice):
     user_input = 0
     while user_input != 1 and user_input != 2:
         try:
-            user_input = int(input(B_YELLOW+'Please enter your choice: '+RESET))
+            user_input = int(
+                input(B_YELLOW+'Please enter your choice: ' + RESET)
+                )
             if user_input != 1 and user_input != 2:
                 print(B_RED+'Invalid Number!'+RESET)
                 print(B_CYAN+'Please enter number 1 or 2'+RESET)
@@ -540,7 +542,7 @@ def submit_option(user_choice):
         end()
     elif user_input == 2:
         print(B_YELLOW+'You choose to EXIT the survey.'+RESET)
-        exit()      
+        exit()
 
 
 def home_page():
@@ -593,14 +595,15 @@ def welcome():
     print(instruction[4].upper())
     print()
     print()
-    input(B_YELLOW + '                      ...Press enter to continue' + RESET)
+    input(B_YELLOW + '          ...Press enter to continue' + RESET)
     clear_scr()
+    print()
     print(instruction[5].upper())
     print(instruction[6].upper())
     print(instruction[7].upper())
     print()
     print()
-    input(B_YELLOW + '                      ...Press enter to continue' + RESET)
+    input(B_YELLOW + '          ...Press enter to continue' + RESET)
     # input(colored('Press enter to continue...', 'blue', 'on_yellow'))
     print()
     # clear_scr()

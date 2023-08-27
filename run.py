@@ -99,7 +99,7 @@ def age_group():
     print()
     # This is to updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(3-2)
+    time.sleep(2)
     # This is to go to function gender() next
     gender()
 
@@ -432,7 +432,7 @@ def experiences():
     choice = ['1', '2', '3', '4', '5']
     # This is to print index number start with 1 in the choice
     for index, range in enumerate(choice, start=1):
-        print(f'{index}.{range}')
+        print(f'{index}. {range}')
     print()
     user_input = 0
     while user_input < 1 or user_input > len(choice):
@@ -472,7 +472,7 @@ def return_holiday():
     choice = ['1', '2', '3', '4', '5']
     # This is to print index number start with 1 in the choice
     for index, range in enumerate(choice, start=1):
-        print(f'{index}.{range}')
+        print(f'{index}. {range}')
     print()
     user_input = 0
     while user_input < 1 or user_input > len(choice):
@@ -535,12 +535,12 @@ def submit_option(user_choice):
     if user_input == 1:
         print(B_YELLOW+'You choose to Submit the survey.'+RESET)
         print()
-        print(B_CYAN+"Thank you for completing the survey"+RESET)
+        # print(B_CYAN+"Thank you for completing the survey"+RESET)
         time.sleep(3)
         end()
     elif user_input == 2:
         print(B_YELLOW+'You choose to EXIT the survey.'+RESET)
-        exit()       
+        exit()      
 
 
 def home_page():
@@ -592,9 +592,13 @@ def welcome():
     print(instruction[3].upper())
     print(instruction[4].upper())
     print()
+    print()
+    input(B_YELLOW + '                      ...Press enter to continue' + RESET)
+    clear_scr()
     print(instruction[5].upper())
     print(instruction[6].upper())
     print(instruction[7].upper())
+    print()
     print()
     input(B_YELLOW + '                      ...Press enter to continue' + RESET)
     # input(colored('Press enter to continue...', 'blue', 'on_yellow'))
@@ -608,6 +612,7 @@ def end():
     Ask user if they want to exit or not.
     End of survey.
     """
+    clear_scr()
     select = 0
     while select != 1 and select != 2:
         try:
@@ -630,11 +635,12 @@ def end():
         clear_scr()
         goodbye_msg = SHEET.worksheet('text').col_values(3)
         print(BLUE + goodbye_msg[1].upper() + RESET)
+        print()
         print(BLUE + goodbye_msg[2].upper() + RESET)
         print()
         exit()
     elif select == 2:
-        main_page()
+        home_page()
 
 
 welcome()

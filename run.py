@@ -2,8 +2,6 @@ import gspread
 from google.oauth2.service_account import Credentials
 import os   # To use for clear screen
 import time
-import pandas as pd
-import numpy as np
 import colorama
 from colorama import Fore, Back, Style
 colorama.init(autoreset=True)   # To initialize the colorama library

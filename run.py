@@ -635,9 +635,9 @@ def end():
         time.sleep(3)
         clear_scr()
         goodbye_msg = SHEET.worksheet('text').col_values(3)
-        print(BLUE + goodbye_msg[1].upper() + RESET)
+        print(B_CYAN + goodbye_msg[1].upper() + RESET)
         print()
-        print(BLUE + goodbye_msg[2].upper() + RESET)
+        print(B_CYAN + goodbye_msg[2].upper() + RESET)
         print()
         exit()
     elif select == 2:

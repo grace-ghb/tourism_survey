@@ -635,6 +635,8 @@ def end():
         time.sleep(3)
         clear_scr()
         goodbye_msg = SHEET.worksheet('text').col_values(3)
+        print()
+        print()
         print(B_CYAN + goodbye_msg[1].upper() + RESET)
         print()
         print(B_CYAN + goodbye_msg[2].upper() + RESET)

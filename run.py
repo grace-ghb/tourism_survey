@@ -42,14 +42,6 @@ q_and_a = SHEET.worksheet('q_and_a').get_all_values()
 survey_answer = SHEET.worksheet('survey_answer').get_all_values()
 # To pull all values from the sheet.
 # data = text.get_all_values()
-# data2 = q_and_a.get_all_values()
-# data3 = survey_ans.get_all_values()
-# print(text)
-# print()
-# print(data2)
-# print()
-# print(data3)
-# print()
 
 
 def clear_scr():
@@ -61,7 +53,7 @@ def clear_scr():
 
 
 # Global variable for result
-user_choice = ['', '', '', '', '', '', '', '', '', '', '']
+user_choice = ['', '', '', '', '', '', '', '',  '', '', '']
 
 
 def age_group():
@@ -96,8 +88,7 @@ def age_group():
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is to updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
-    time.sleep(2)
+    update_survey_answer(user_choice)    
     # This is to go to function gender() next
     gender()
 
@@ -136,7 +127,6 @@ def gender():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function continents() next
     continents()
 
@@ -176,7 +166,6 @@ def continents():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function destination() next
     destination()
 
@@ -215,7 +204,6 @@ def destination():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function planning() next
     planning()
 
@@ -254,7 +242,6 @@ def planning():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function motivations() next
     motivations()
 
@@ -295,7 +282,6 @@ def motivations():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function decision() next
     decision()
 
@@ -335,7 +321,6 @@ def decision():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function accommodation() next
     accommodation()
 
@@ -375,7 +360,6 @@ def accommodation():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function spending() next
     spending()
 
@@ -414,7 +398,6 @@ def spending():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function continents() next
     experiences()
 
@@ -454,7 +437,6 @@ def experiences():
     print()
     # This is updated the user choice to survey answer sheet
     update_survey_answer(user_choice)
-    time.sleep(2)
     # This is to go to function continents() next
     return_holiday()
 
@@ -505,10 +487,14 @@ def update_survey_answer(user_choice):
     """
     This is to update the user's answer into the sheet survey_answer
     """
-    # print('Updating result, please wait...\n')
     survey_answer = SHEET.worksheet("survey_answer")
     survey_answer.append_row(user_choice)
-    # print('The result updated.\n')
+    # survey_answer = SHEET.worksheet("survey_answer")
+    # print(user_choice)
+    # row = [user_choice]
+    # row = []
+    # row.append(user_choice)
+    # survey_answer.append_row([row])
 
 
 def submit_option(user_choice):

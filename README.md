@@ -249,7 +249,19 @@ Back to [Table of Contents](#table-of-contents)
 # Feature Testing
 
 
+
+
 # Bugs
+
+- There is a problem with the data append into the worksheet. All the result was appended in one column instead of in one row according to the column.
+- Not yet resolve.
+
+![Worksheet](images/wk_2.png)
+
+- After the message "You have selected: {Choose answer}" the cursor will go down next line. When accidentally press a number in the cursor place, it will consider answering the next question which give user no option to select an answer for the next question.
+- This was resolve by remove the time.sleep() from all th question.
+
+![Question 1](images/q1.png)
 
 # Deployment
 
@@ -297,6 +309,13 @@ Back to [Table of Contents](#table-of-contents)
 - [Stackoveflow](https://stackoverflow.com/)
 - [ChatGpt](https://chat.openai.com/)
 - [YouTube - Tech with Tim](https://www.youtube.com/watch?v=u51Zjlnui4Y) How to use colorama
+
+
+# Acknowledgements
+
+- My husband for his support and understanding.
+- My mentor Marcel, thank you for his invaluable feedback and guidance.
+- Code Institute and the Slack Community for their support, encouragement, and sharing of knowledge make it possible for me to work on the project.
 
 
 Back to [Table of Contents](#table-of-contents)

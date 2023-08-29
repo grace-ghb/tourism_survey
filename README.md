@@ -9,37 +9,25 @@ To view the project click [here](https://tourism-survey-02c2e85cb97f.herokuapp.c
 1.	User Experience (UX)
 	-   Project Goals
 	-   User Stories
-	-   Typography
-	Wireframes
-2.	Design
-	-   Typography
-	-   Wireframes
-    -   Features
+	-   Data Model
+	-   Flowchart
+2.	Features
+	-   Title Screen
+	-   Option
+    -   Taking the Survey
 3.	Techologies Used
     -    Languages Used
-    -    Frameworks, Libraries & Programs Used
+    -    Frameworks, Libraries & Programs
 4.	Testing
-o	W3C Validator
-o	Accessibility
-o	Home Page
-o	Menu Page
-o	Gallery Page
-o	Contact Us Page
-o	Sign Up Page
-o	Tools Testing
-o	General Testing
-5.	Finish Products
-o	Home Page
-o	Menu Page
-o	Gallery Page
-o	Contact Us Page
-o	Sign Up Page
-6.	Deployment
-o	GitHub Pages
-7.	Credits
-o	Content
-o	Code
-o	Acknowledgments
+    -   Code Validation
+5.  Features Testing
+6.  Bugs
+7.  Deployment
+8.  Credits
+    -   Contents
+    -   Code
+9.  Acknowledgements
+
  
 # User Experience (UX)
 
@@ -328,5 +316,5 @@ Back to [Table of Contents](#table-of-contents)
 
 
 Back to [Table of Contents](#table-of-contents)
-Top
- 
+
+[Top](#tourism-survey)

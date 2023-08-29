@@ -39,7 +39,9 @@ RESET = Style.RESET_ALL     # Resets all the color to default
 # To access the data in the worksheet, parameter name same as sheet name.
 text = SHEET.worksheet('text').get_all_values()
 q_and_a = SHEET.worksheet('q_and_a').get_all_values()
-survey_answer = SHEET.worksheet('survey_answer').get_all_values()
+survey_answer_sheet = SHEET.worksheet('survey_answer')
+# To get all answer from the survey_answer_sheet store to survey_answer
+survey_answer = survey_answer_sheet.get_all_values()
 # To pull all values from the sheet.
 # data = text.get_all_values()
 
@@ -53,7 +55,7 @@ def clear_scr():
 
 
 # Global variable for result
-user_choice = ['', '', '', '', '', '', '', '',  '', '', '']
+user_choice = []
 
 
 def age_group():
@@ -79,7 +81,8 @@ def age_group():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -87,8 +90,6 @@ def age_group():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is to updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)    
     # This is to go to function gender() next
     gender()
 
@@ -117,7 +118,8 @@ def gender():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -125,8 +127,6 @@ def gender():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function continents() next
     continents()
 
@@ -156,7 +156,8 @@ def continents():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -164,8 +165,6 @@ def continents():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function destination() next
     destination()
 
@@ -194,7 +193,8 @@ def destination():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -202,8 +202,6 @@ def destination():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function planning() next
     planning()
 
@@ -232,7 +230,8 @@ def planning():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -240,8 +239,6 @@ def planning():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function motivations() next
     motivations()
 
@@ -272,7 +269,8 @@ def motivations():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -280,8 +278,6 @@ def motivations():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function decision() next
     decision()
 
@@ -311,7 +307,8 @@ def decision():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -319,8 +316,6 @@ def decision():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function accommodation() next
     accommodation()
 
@@ -350,7 +345,8 @@ def accommodation():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -358,8 +354,6 @@ def accommodation():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function spending() next
     spending()
 
@@ -388,7 +382,8 @@ def spending():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -397,7 +392,7 @@ def spending():
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
     # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
+    # update_survey_answer(user_choice)
     # This is to go to function continents() next
     experiences()
 
@@ -427,7 +422,8 @@ def experiences():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -435,8 +431,6 @@ def experiences():
         except ValueError:
             print(B_CYAN+'Please Enter a Valid Number.'+RESET)
     print()
-    # This is updated the user choice to survey answer sheet
-    update_survey_answer(user_choice)
     # This is to go to function continents() next
     return_holiday()
 
@@ -466,7 +460,8 @@ def return_holiday():
                 selected = choice[user_input - 1]
                 print(B_YELLOW + f'You have selected: {selected}' + RESET)
                 # Update the user's andswer in the list
-                user_choice[0] = selected
+                # Append selected answer to user_choice
+                user_choice.append(selected)
             else:
                 print()
                 print(B_RED+'Invalid input! Please try again.'+RESET)
@@ -487,14 +482,7 @@ def update_survey_answer(user_choice):
     """
     This is to update the user's answer into the sheet survey_answer
     """
-    survey_answer = SHEET.worksheet("survey_answer")
-    survey_answer.append_row(user_choice)
-    # survey_answer = SHEET.worksheet("survey_answer")
-    # print(user_choice)
-    # row = [user_choice]
-    # row = []
-    # row.append(user_choice)
-    # survey_answer.append_row([row])
+    survey_answer_sheet.append_row(user_choice)
 
 
 def submit_option(user_choice):
